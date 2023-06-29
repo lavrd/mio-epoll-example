@@ -64,7 +64,7 @@ fn main() {
                                     conn.write_all(&buf[0..n]).unwrap();
                                 }
                                 Err(ref e) if e.kind() == ErrorKind::WouldBlock => {
-                                    // todo: write comment
+                                    // This error means that in socket buffer there are not data but it is not closed.
                                 }
                                 Err(e) => {
                                     panic!("failed to read from connection: {:?}: {:?}", addr, e)
